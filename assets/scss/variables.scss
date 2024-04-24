@@ -1,0 +1,36 @@
+$mobile: 767px;
+$tablet: 991px;
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+:root {
+  --accent: #ff842b;
+  --white: #fff;
+  --borders: #cdcdcd;
+  --del-color: #999;
+  --notion: #01c120;
+  --dark: #000;
+  --secondary: #6c727f;
+  --label: #121826;
+  --green: #00ca14;
+  --error: #f00;
+
+  --br-sm: 4px;
+  --br-md: 8px;
+  --br-lg: 12px;
+  --br-xl: 20px;
+
+  --fast: 0.3s;
+  --middle: 0.3s;
+  --slow: 0.3s;
+}

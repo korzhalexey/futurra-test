@@ -1,0 +1,46 @@
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color var(--fast), color var(--fast);
+  border: unset;
+  border-radius: var(--br-lg);
+  outline: none;
+  width: 100%;
+  padding: 18px;
+  cursor: pointer;
+  font: 700 16px / 1.2 "Proxima Nova", sans-serif;
+  gap: 10px;
+}
+
+.button {
+  &--action {
+    background-color: #000;
+    color: #fff;
+
+    &:hover {
+      background-color: #00ca14;
+    }
+
+    &:disabled {
+      background-color: #d2d2d2;
+    }
+  }
+
+  &--paypal {
+    background-color: #fec538;
+
+    &:hover {
+      background-color: #ffda80;
+    }
+  }
+
+  &--gpay {
+    background-color: #e1e1e1;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+}
