@@ -7,7 +7,7 @@ const props = defineProps<{
 
 const inputRef = ref<HTMLInputElement | null>(null);
 const focused = ref(false);
-const errorVisible = computed(() => !focused.value && modelValue.value && props.error !== '');
+const errorVisible = computed(() => props.error && !focused.value && modelValue.value);
 </script>
 
 <template>
@@ -42,7 +42,8 @@ const errorVisible = computed(() => !focused.value && modelValue.value && props.
 
   &__label {
     position: absolute;
-    background-color: var(--white);
+    border-radius: 1in;
+    background-color: var(--input);
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--label);
@@ -51,22 +52,24 @@ const errorVisible = computed(() => !focused.value && modelValue.value && props.
   }
 
   &__input {
-    border: 1px solid #d2d5da;
+    border: 1px solid var(--input-border);
     border-radius: var(--br-md);
     width: 100%;
     padding: 15px 16px;
+    background-color: var(--input);
     font: 700 14px "Proxima Nova", sans-serif;
+    color: var(--main-text);
 
     &--error {
       border-color: var(--error);
     }
 
     &::placeholder {
-      color: var(--secondary);
+      color: var(--input-placeholder);
     }
 
     &:focus {
-      border: 1px solid var(--green);
+      border-color: var(--input-focus-border);
       outline: unset;
     }
   }
@@ -78,7 +81,7 @@ const errorVisible = computed(() => !focused.value && modelValue.value && props.
     right: 0;
     justify-content: center;
     align-items: center;
-    background-color: var(--white);
+    background-color: var(--input);
     translate: -12px -50%;
   }
 

@@ -1,19 +1,23 @@
 <script lang="ts" setup>
+import { splitWords } from '~/utils/splitWords';
+
 const paymentDialogRef = ref();
+const { isLightTheme, currentAppName } = useTheme();
+const splittedAppName = splitWords(currentAppName.value);
 </script>
 
 <template>
   <div class="learning-journey-promo">
     <h2 class="learning-journey-promo__title">
-      Start your learning <br />
-      journey now
+      <span>Start</span> your learning <br />
+                         journey <span>now</span>
     </h2>
 
     <p class="learning-journey-promo__description">
       Get a
       <strong>
-        <span class="text--primary">Planet</span
-        >Learn
+        <span class="text--primary">{{ splittedAppName[0] }}</span
+        >{{ splittedAppName[1] }}
       </strong>
       plan to rock <br class="only-desktop" />
       self-learning
@@ -60,5 +64,9 @@ const paymentDialogRef = ref();
       max-width: unset;
     }
   }
+}
+
+.dark .learning-journey-promo__title span {
+  color: var(--accent);
 }
 </style>

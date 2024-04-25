@@ -14,52 +14,60 @@ watch(timeLeft, (timeLeft) => {
 
 <template>
   <div class="subscription-details">
-    <div class="subscription-details__wrapper">
-      <div class="subscription-details__content">
-        <p class="subscription-details__trial">{{ trialDuration }}-day trial for
-          <mark>
-            {{ formatPrice(trialPrice) }}
-          </mark>
-        </p>
+    <div class="subscription-details__container">
+      <div class="subscription-details__wrapper">
+        <div class="subscription-details__content">
+          <p class="subscription-details__trial">{{ trialDuration }}-day trial for
+            <mark>
+              {{ formatPrice(trialPrice) }}
+            </mark>
+          </p>
 
-        <p class="subscription-details__week">
-          Then
-          {{ formatPrice(timeLeft ? promotionalPrice : regularPrice) }}
-        </p>
+          <p class="subscription-details__week">
+            Then
+            {{ formatPrice(timeLeft ? promotionalPrice : regularPrice) }}
+          </p>
 
-        <p v-if="timeLeft" class="subscription-details__discount">
-          <del>
-            {{ formatPrice(regularPrice) }}/week
-          </del>
-        </p>
+          <p v-if="timeLeft" class="subscription-details__discount">
+            <del>
+              {{ formatPrice(regularPrice) }}/week
+            </del>
+          </p>
+        </div>
+
+        <ui-timer
+            v-if="timeLeft"
+            v-model="timeLeft"
+            :initial-seconds-amount="initialTimer"
+            :timer-interval-seconds="1"
+        />
       </div>
 
-      <ui-timer
-          v-if="timeLeft"
-          v-model="timeLeft"
-          :initial-seconds-amount="initialTimer"
-          :timer-interval-seconds="1"
-      />
+      <subscription-info class="only-desktop" />
     </div>
-
-    <subscription-info class="only-desktop" />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .subscription-details {
   position: relative;
-  border: 1px solid var(--borders);
-  border-radius: var(--br-xl);
   max-width: 480px;
-  padding: 24px;
-  background-color: var(--white);
 
   @include tablet {
-    border-radius: var(--br-lg);
     width: 100%;
     max-width: unset;
-    padding: 12px 16px;
+  }
+
+  &__container {
+    border: 1px solid var(--input-border);
+    border-radius: var(--br-xl);
+    padding: 24px;
+    background-color: var(--white);
+
+    @include tablet {
+      border-radius: var(--br-lg);
+      padding: 16px;
+    }
   }
 
   &::before {
@@ -113,6 +121,58 @@ watch(timeLeft, (timeLeft) => {
   &__discount {
     @include tablet {
       font-size: 0.875rem;
+    }
+  }
+}
+
+.dark {
+  .subscription-details {
+    &__container {
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(20px);
+
+      @include tablet {
+        border: unset;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(0);
+      }
+    }
+
+    &::before {
+      content: "";
+      top: 0;
+      left: 0;
+      width: 86px;
+      height: 86px;
+      background-image: url("@/assets/images/ball.svg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      translate: -50% -40%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 247px;
+      height: 247px;
+      background-image: url("@/assets/images/rocket.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      translate: 50% 40%;
+    }
+
+    &::before,
+    &::after {
+      @include tablet {
+        content: unset;
+      }
+    }
+
+    &__trial,
+    &__trial mark {
+      color: var(--notion);
     }
   }
 }

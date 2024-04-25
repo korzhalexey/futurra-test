@@ -1,16 +1,4 @@
 export default defineNuxtConfig({
-  app: {
-    head: {
-      title: 'PlanetLearn',
-      link: [
-        {
-          rel: 'icon',
-          type: 'image/svg+xml',
-          href: '/logo.svg'
-        }
-      ],
-    },
-  },
   devtools: { enabled: true },
   css: [
     '~/assets/scss/reset.scss',
@@ -22,16 +10,16 @@ export default defineNuxtConfig({
   plugins: [
     {
       src: '~/plugins/clickOutside.ts',
-      mode: 'client'
-    }
+      mode: 'client',
+    },
   ],
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "/assets/scss/mixins.scss";'
-        }
-      }
-    }
-  }
-})
+          additionalData: '@import "/assets/scss/mixins.scss";',
+        },
+      },
+    },
+  },
+});

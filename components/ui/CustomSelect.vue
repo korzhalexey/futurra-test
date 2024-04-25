@@ -15,9 +15,9 @@ function hideOptions () {
 <template>
   <div
       v-click-outside="hideOptions"
+      :class="{ 'select--open': optionsVisible }"
       class="select"
       @click="optionsVisible = !optionsVisible"
-      :class="{ 'select--open': optionsVisible }"
   >
     <div class="select__label">{{ label }}</div>
     <span class="select__selected">{{ selected || 'Select' }}</span>
@@ -39,22 +39,37 @@ function hideOptions () {
 <style lang="scss" scoped>
 .select {
   position: relative;
-  border: 1px solid #d2d5da;
+  border: 1px solid var(--input-border);
   border-radius: var(--br-md);
   padding: 15px 16px;
+  background-color: var(--input);
   cursor: pointer;
   font: 400 12px "Proxima Nova", sans-serif;
   color: var(--secondary);
 
   &--open {
+    border-color: var(--input-focus-border);
     border-radius: var(--br-md) var(--br-md) 0 0;
-    border-color: var(--green);
+
+    &::after {
+      rotate: 180deg;
+    }
+  }
+
+  &::after {
+    content: url("@/assets/images/chevron.svg");
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transition: rotate var(--fast);
+    translate: -15px -50%;
   }
 
   &__label {
     position: absolute;
     top: 0;
-    background-color: var(--white);
+    border-radius: 1in;
+    background-color: var(--input);
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--label);
@@ -66,12 +81,13 @@ function hideOptions () {
     position: absolute;
     bottom: 0;
     left: -1px;
-    border: 1px solid #d2d5da;
-    width: calc(100% + 2px);
-    background-color: var(--white);
-    translate: 0 calc(100% + 1px);
-    max-height: calc(32px * 4);
     overflow: scroll;
+    border: 1px solid var(--select-border);
+    border-radius: 0 0 var(--br-md) var(--br-md);
+    width: calc(100% + 2px);
+    max-height: calc(32px * 4);
+    background-color: var(--input);
+    translate: 0 calc(100% + 1px);
   }
 
   &__option {
@@ -80,12 +96,12 @@ function hideOptions () {
     color: var(--secondary);
 
     &:not(:last-child) {
-      border-bottom: 1px solid #d2d5da;
+      border-bottom: 1px solid var(--select-border);
     }
 
     &--selected,
     &:hover {
-      background-color: var(--green);
+      background-color: var(--select-hover);
       color: var(--white);
     }
 

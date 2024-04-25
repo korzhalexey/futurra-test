@@ -85,7 +85,6 @@ const clearForm = () => {
     display: block;
     position: relative;
     margin-bottom: 16px;
-    background-color: var(--white);
     font-size: 0.75rem;
     text-align: center;
     color: rgba(0, 0, 0, 0.4);
@@ -100,7 +99,7 @@ const clearForm = () => {
       display: block;
       position: absolute;
       top: 50%;
-      border: 1px solid rgba(0, 0, 0, 0.1);
+      border: 1px solid var(--separator);
       border-radius: 1px;
       width: calc(100% / 2 - 17px);
       translate: 0 -50%;
@@ -117,7 +116,7 @@ const clearForm = () => {
 
   &__close {
     background-color: #0000;
-    color: rgba(0, 0, 0, 0.4);
+    color: var(--button-cancel-color);
 
     @include tablet {
       font-size: 1rem;
@@ -126,8 +125,16 @@ const clearForm = () => {
     }
 
     &:hover {
-      color: var(--dark);
+      color: var(--accent);
     }
+  }
+}
+
+.dark .payment {
+  background-color: #4d5e82;
+
+  &__separator {
+    color: #fff;
   }
 }
 </style>

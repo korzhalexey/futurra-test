@@ -1,10 +1,24 @@
+<script lang="ts" setup>
+import logo from '~/public/logo.svg';
+import darkLogo from '~/public/logo_dark.svg';
+import { splitWords } from '~/utils/splitWords';
+
+const { isLightTheme, currentAppName } = useTheme();
+const splittedAppName = splitWords(currentAppName.value);
+console.log(isLightTheme ? logo : darkLogo);
+</script>
+
 <template>
   <div class="logo">
-    <img alt="Planet Learn Logo" class="logo__image" src="/logo.svg">
+    <img
+        :src="isLightTheme ? logo : darkLogo"
+        alt="Planet Learn Logo"
+        class="logo__image"
+    >
 
     <h1 class="logo__name">
-      <span class="text--primary">Planet</span
-      >Learn
+      <span class="text--primary">{{ splittedAppName[0] }}</span
+      >{{ splittedAppName[1] }}
     </h1>
   </div>
 </template>
@@ -20,5 +34,3 @@
   font-size: 1.5rem;
 }
 </style>
-<script setup lang="ts">
-</script>

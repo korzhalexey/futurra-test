@@ -12,3 +12,23 @@ $tablet: 991px;
     @content;
   }
 }
+
+@mixin fill-filter($color) {
+  $brightness-value: brightness(0) saturate(100%);
+  $invert-value: invert(53%) sepia(86%) saturate(1327%);
+  $hue-value: hue-rotate(174deg) brightness(101%) contrast(101%);
+
+  $filter-value: $brightness-value $invert-value $hue-value;
+
+  @if ($color == "default") {
+    filter: $filter-value;
+  } @else {
+    $hue-adjust: hue-rotate(
+        calc(
+          (180deg -
+          hue($color)) * -1
+        )
+    );
+    filter: $brightness-value $invert-value $hue-adjust;
+  }
+}

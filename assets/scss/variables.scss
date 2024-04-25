@@ -1,27 +1,33 @@
-$mobile: 767px;
-$tablet: 991px;
-
-@mixin mobile {
-  @media (max-width: $mobile) {
-    @content;
-  }
-}
-
-@mixin tablet {
-  @media (max-width: $tablet) {
-    @content;
-  }
-}
-
 :root {
   --accent: #ff842b;
-  --white: #fff;
-  --borders: #cdcdcd;
-  --del-color: #999;
-  --notion: #01c120;
-  --dark: #000;
+  --main-text: #000;
   --secondary: #6c727f;
   --label: #121826;
+
+  --button-action-color: #fff;
+  --button-action-hover: #00ca14;
+  --button-action-hover-сolor: #fff;
+  --button-action-disabled: #d2d2d2;
+  --button-action-disabled-color: #fff;
+
+  --button-cancel-color: rgba(0, 0, 0, 0.4);
+
+  --input: #fff;
+  --input-border: #d2d5da;
+  --input-focus-border: #00ca14;
+  --input-placeholder: #6c727f;
+
+  --select-border: #d2d5da;
+  --select-hover: #00ca14;
+
+  --notion: #01c120;
+  --timer: #00ca14;
+  --separator: rgba(0, 0, 0, 0.1);
+  --secure-label: #fff;
+
+  --white: #fff;
+  --del-color: #999;
+  --dark: #000;
   --green: #00ca14;
   --error: #f00;
 
@@ -33,4 +39,34 @@ $tablet: 991px;
   --fast: 0.3s;
   --middle: 0.3s;
   --slow: 0.3s;
+
+  &.dark {
+    --accent: #4eaaff;
+    --main-text: #fff;
+    --secondary: #fff;
+    --label: #fff;
+
+    --button-action-color: #495eee;
+    --button-action-hover: #495eee;
+    --button-action-hover-сolor: #fff;
+    --button-action-disabled: #617398;
+    --button-action-disabled-color: #fff6;
+
+    --button-cancel-color: #fff;
+
+    --input: #617398;
+    --input-border: #0000;
+    --input-focus-border: #7899ff;
+    --input-placeholder: #fff;
+
+    --select-border: #909db7;
+    --select-hover: #6c89ff;
+
+    --notion: #66edff;
+    --timer: #4eaaff;
+    --separator: rgba(255, 255, 255, 0.2);
+    --secure-label: rgba(0, 0, 0, 0.2);
+
+    --filter-icon: brightness(0) saturate(100%) invert(53%) sepia(86%) saturate(1327%) hue-rotate(174deg) brightness(101%) contrast(101%);
+  }
 }

@@ -16,7 +16,7 @@
       </li>
 
       <li class="subscription-info__item">
-        <span class="text--primary">24/7</span>
+        <mark>24/7</mark>
         tutor support in a secure chat
       </li>
 
@@ -69,10 +69,10 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 24px;
-    border: 1px solid var(--borders);
+    border: 1px solid var(--input-border);
     border-radius: var(--br-lg);
     padding: 15px;
-    background-color: var(--white);
+    background-color: var(--secure-label);
     font-weight: 600;
     color: var(--notion);
     gap: 12px;
@@ -82,6 +82,28 @@
     opacity: 0.5;
     font-size: 0.75rem;
     text-align: center;
+  }
+}
+
+.dark .subscription-info {
+  &__item {
+    mark,
+    &:nth-child(1),
+    &:nth-child(4) {
+      color: var(--notion);
+    }
+
+    &::before {
+      filter: var(--filter-icon);
+    }
+  }
+
+  &__secure-label img {
+    filter: var(--filter-icon);
+  }
+
+  &__info {
+    opacity: 0.7;
   }
 }
 </style>

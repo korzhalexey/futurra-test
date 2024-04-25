@@ -1,5 +1,5 @@
 import VisaLogo from '~/public/cards/visa.svg';
-import HiperCardLogo from '~/public/cards/hipercard.svg'
+import HiperCardLogo from '~/public/cards/hipercard.svg';
 import MasterCardLogo from '~/public/cards/mastercard.svg';
 import DiscoverNetworkLogo from '~/public/cards/discover-network.svg';
 import EloLogo from '~/public/cards/elo.svg';

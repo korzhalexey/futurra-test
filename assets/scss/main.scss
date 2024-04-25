@@ -1,11 +1,11 @@
-@import "mixins";
-
-body {
+html {
   font: normal 400 16px/1.2 "Proxima Nova", sans-serif;
+  color: var(--main-text);
 }
 
 h1, h2, h3, h4, h5, h6, {
   font-weight: 800;
+  color: var(--main-text);
 }
 
 strong {
@@ -50,4 +50,8 @@ body {
   &:has(dialog[open]) {
     overflow-y: hidden;
   }
+}
+
+.fill--accent {
+  fill: var(--accent) !important;
 }

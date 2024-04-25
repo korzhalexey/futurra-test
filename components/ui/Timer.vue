@@ -61,7 +61,7 @@ const timer = setInterval(() => {
     left: 0;
     border-radius: var(--br-lg);
     height: 100%;
-    background-color: var(--green);
+    background-color: var(--timer);
   }
 
   &__time {

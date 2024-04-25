@@ -15,15 +15,17 @@ button {
 
 .button {
   &--action {
-    background-color: #000;
-    color: #fff;
+    background-color: var(--main-text);
+    color: var(--button-action-color);
 
     &:hover {
-      background-color: #00ca14;
+      background-color: var(--button-action-hover);
+      color: var(--button-action-hover-color);
     }
 
     &:disabled {
-      background-color: #d2d2d2;
+      background-color: var(--button-action-disabled);
+      color: var(--button-action-disabled-color);
     }
   }
 
